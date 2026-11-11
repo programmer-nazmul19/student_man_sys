@@ -70,6 +70,31 @@ def search_student(search_name):
     if not found:
         print(f"No student found with the name: {search_name}")
 
+# grade analysis function
+def grade_analysis(name):
+    name = name.strip().lower()
+    if name in student_name:
+        student_grade = int(student_name[name])
+        if student_grade >= 90 and student_grade <= 100:
+            print(f"Student {name} has an A+ grade.")
+        elif student_grade >= 80 and student_grade < 90:
+            print(f"Student {name} has an A grade.")
+        elif student_grade >= 70 and student_grade < 80:
+            print(f"Student {name} has an  A- grade.")
+        elif student_grade >= 60 and student_grade < 70:
+            print(f"Student {name} has a B grade.")
+        elif student_grade >= 50 and student_grade < 60:
+            print(f"Student {name} has a B- grade.")
+        elif student_grade >= 40 and student_grade < 50:
+            print(f"Student {name} has a C grade.")
+        elif student_grade >= 33 and student_grade < 40:
+            print(f"Student {name} has a D grade.")
+        elif student_grade < 33:
+            print(f"Student {name} has failed the exam.")
+        
+    else:
+        print(f"Student {name} not found in the system.")
+
 def main():
     load_students()  # Load existing student data from the file
     while True:
@@ -79,6 +104,7 @@ def main():
         print("3. Delete Student")
         print("4. View All Students")
         print("5. Search Student")
+        print("6. Grade Analysis")
         print("8. Exit")
         choice = input("Enter your choice (1-5): \n")
         if choice == "1":
@@ -97,6 +123,9 @@ def main():
         elif choice == "5":
             search_name = input("Enter student name to search: ")
             search_student(search_name)
+        elif choice == "6":
+            name = input("Enter student name for grade analysis: ")
+            grade_analysis(name)
         elif choice == "8":
             print("Exiting the program. Goodbye!")
             break
